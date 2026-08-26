@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.srcfur.badhygiene.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [],
+  "client": [
+    "GuiMixin",
+    "MixinTitleScreen"
+  ],
+  "server": [],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
