@@ -1,10 +1,9 @@
 package com.srcfur.badhygiene.item;
 
-import com.srcfur.badhygiene.Constants;
+import com.srcfur.badhygiene.BadHygieneConstants;
 import com.srcfur.badhygiene.block.BadHygieneBlocks;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.BlockItem;
@@ -15,8 +14,8 @@ import java.util.function.Function;
 
 public class BadHygieneItemsFabric {
     private static Item register(String name, Function<Item.Properties, Item> factory, Item.Properties properties){
-        Item item = factory.apply(properties.setId(ResourceKey.create(BuiltInRegistries.ITEM.key(), Identifier.fromNamespaceAndPath(Constants.MOD_ID, name))));
-        Registry.register(BuiltInRegistries.ITEM, Identifier.fromNamespaceAndPath(Constants.MOD_ID, name), item);
+        Item item = factory.apply(properties.setId(ResourceKey.create(BuiltInRegistries.ITEM.key(), Identifier.fromNamespaceAndPath(BadHygieneConstants.MOD_ID, name))));
+        Registry.register(BuiltInRegistries.ITEM, Identifier.fromNamespaceAndPath(BadHygieneConstants.MOD_ID, name), item);
         return item;
     }
     private static BlockItem registerBlockItem(String name, Block block, Item.Properties properties){

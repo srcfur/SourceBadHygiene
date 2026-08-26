@@ -1,7 +1,7 @@
 package com.srcfur.badhygiene.component;
 
 import com.mojang.serialization.Codec;
-import com.srcfur.badhygiene.Constants;
+import com.srcfur.badhygiene.BadHygieneConstants;
 import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.codec.ByteBufCodecs;
@@ -13,7 +13,7 @@ import net.neoforged.neoforge.registries.RegisterEvent;
 
 import java.util.function.UnaryOperator;
 
-@Mod(Constants.MOD_ID)
+@Mod(BadHygieneConstants.MOD_ID)
 public class BadHygieneNFDataComponents {
     public BadHygieneNFDataComponents(IEventBus bus){
         bus.register(BadHygieneNFDataComponents.class);
@@ -21,7 +21,7 @@ public class BadHygieneNFDataComponents {
 
     private static <T> DataComponentType<T> register(RegisterEvent.RegisterHelper<DataComponentType<?>> registry, String name, UnaryOperator<DataComponentType.Builder<T>> builder){
         DataComponentType<T> component = ((DataComponentType.Builder)builder.apply(DataComponentType.builder())).build();
-        registry.register(Identifier.fromNamespaceAndPath(Constants.MOD_ID, name), component);
+        registry.register(Identifier.fromNamespaceAndPath(BadHygieneConstants.MOD_ID, name), component);
         return component;
     }
 

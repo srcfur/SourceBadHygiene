@@ -1,6 +1,6 @@
 package com.srcfur.badhygiene.block.entity;
 
-import com.srcfur.badhygiene.Constants;
+import com.srcfur.badhygiene.BadHygieneConstants;
 import com.srcfur.badhygiene.block.BadHygieneBlocks;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.Identifier;
@@ -11,17 +11,16 @@ import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.registries.RegisterEvent;
 
 import java.util.Set;
-import java.util.function.Supplier;
 
 @SuppressWarnings("unchecked")
-@Mod(Constants.MOD_ID)
+@Mod(BadHygieneConstants.MOD_ID)
 public class BadHygieneNFBlockEntities {
     public BadHygieneNFBlockEntities(IEventBus bus){
         bus.register(BadHygieneNFBlockEntities.class);
     }
 
     private static BlockEntityType<?> register(RegisterEvent.RegisterHelper<BlockEntityType<?>> registry, String name, BlockEntityType<?> ent){
-        registry.register(Identifier.fromNamespaceAndPath(Constants.MOD_ID, name), ent);
+        registry.register(Identifier.fromNamespaceAndPath(BadHygieneConstants.MOD_ID, name), ent);
         return ent;
     }
 

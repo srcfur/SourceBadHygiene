@@ -1,15 +1,15 @@
 package com.srcfur.badhygiene;
 
+import com.srcfur.badhygiene.api.AbstractHygienePlayer;
 import com.srcfur.badhygiene.api.HygieneAPI;
 import com.srcfur.badhygiene.platform.Services;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.world.item.Items;
+import net.minecraft.server.level.ServerPlayer;
 
 // This class is part of the common project meaning it is shared between all supported loaders. Code written here can only
 // import and access the vanilla codebase, libraries used by vanilla, and optionally third party libraries that provide
 // common compatible binaries. This means common code can not directly use loader specific concepts such as NeoForge events
 // however it will be compatible with all supported mod loaders.
-public class CommonClass {
+public class BadHygieneCommon {
     public static final HygieneAPI API = Services.load(HygieneAPI.class);
     // The loader specific projects are able to import and use any code from the common project. This allows you to
     // write the majority of your code here and load it from your loader specific projects. This example has some
@@ -24,7 +24,7 @@ public class CommonClass {
         // the platform specific approach.
         if (Services.PLATFORM.isModLoaded("badhygiene")) {
 
-            Constants.LOG.info("Hello to the hygiene!");
+            BadHygieneConstants.LOG.info("Hello to the hygiene!");
         }
     }
 }

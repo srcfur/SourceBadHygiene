@@ -1,6 +1,6 @@
 package com.srcfur.badhygiene.platform;
 
-import com.srcfur.badhygiene.Constants;
+import com.srcfur.badhygiene.BadHygieneConstants;
 import com.srcfur.badhygiene.platform.services.IPlatformHelper;
 
 import java.util.ServiceLoader;
@@ -24,7 +24,7 @@ public class Services {
         final T loadedService = ServiceLoader.load(clazz, Services.class.getClassLoader())
                 .findFirst()
                 .orElseThrow(() -> new NullPointerException("Failed to load service for " + clazz.getName()));
-        Constants.LOG.debug("Loaded {} for service {}", loadedService, clazz);
+        BadHygieneConstants.LOG.debug("Loaded {} for service {}", loadedService, clazz);
         return loadedService;
     }
 }

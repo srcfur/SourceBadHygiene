@@ -1,7 +1,7 @@
 package com.srcfur.badhygiene.client;
 
-import com.srcfur.badhygiene.CommonClass;
-import com.srcfur.badhygiene.Constants;
+import com.srcfur.badhygiene.BadHygieneCommon;
+import com.srcfur.badhygiene.BadHygieneConstants;
 import com.srcfur.badhygiene.api.AbstractHygienePlayer;
 import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.Minecraft;
@@ -9,16 +9,13 @@ import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.resources.Identifier;
 
-import java.awt.*;
-import java.lang.module.Configuration;
-
 public class HygieneSurvivalUI {
-    public static final Identifier BladderSpriteSheet = Identifier.fromNamespaceAndPath(Constants.MOD_ID, "bladder");
+    public static final Identifier BladderSpriteSheet = Identifier.fromNamespaceAndPath(BadHygieneConstants.MOD_ID, "bladder");
     public static void extractHygiene(GuiGraphicsExtractor graphics, DeltaTracker tracker){
         int frames = 1;
         int offset = 0;
 
-        AbstractHygienePlayer hygienePlayer = CommonClass.API.getHygienePlayer(Minecraft.getInstance().player);
+        AbstractHygienePlayer hygienePlayer = BadHygieneCommon.API.getHygienePlayer(Minecraft.getInstance().player);
 
         if(hygienePlayer.getBladderFullness() > 0.1) { frames = 3; offset = 32; }
         if(hygienePlayer.getBladderFullness() > 0.5) { frames = 4; offset = 128; }

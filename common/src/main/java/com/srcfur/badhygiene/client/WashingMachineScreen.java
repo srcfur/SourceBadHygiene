@@ -1,6 +1,6 @@
 package com.srcfur.badhygiene.client;
 
-import com.srcfur.badhygiene.Constants;
+import com.srcfur.badhygiene.BadHygieneConstants;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.renderer.RenderPipelines;
@@ -9,7 +9,7 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.player.Inventory;
 
 public class WashingMachineScreen extends AbstractContainerScreen<WashingMachineMenu> {
-    private static final Identifier BACKGROUND = Identifier.fromNamespaceAndPath(Constants.MOD_ID, "textures/gui/container/washing_machine_screen.png");
+    private static final Identifier BACKGROUND = Identifier.fromNamespaceAndPath(BadHygieneConstants.MOD_ID, "textures/gui/container/washing_machine_screen.png");
 
 
     public WashingMachineScreen(WashingMachineMenu menu, Inventory playerInventory, Component title) {

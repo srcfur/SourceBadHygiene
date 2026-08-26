@@ -1,7 +1,6 @@
 package com.srcfur.badhygiene.block.entity;
 
-import com.srcfur.badhygiene.BadHygiene;
-import com.srcfur.badhygiene.Constants;
+import com.srcfur.badhygiene.BadHygieneConstants;
 import com.srcfur.badhygiene.block.BadHygieneBlocks;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.minecraft.core.Registry;
@@ -13,7 +12,7 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 
 public class BadHygieneBlockEntitiesFabric {
     private static <T extends BlockEntity> BlockEntityType<T> register(String name, FabricBlockEntityTypeBuilder.Factory<? extends T> entityFactory, Block... blocks){
-        return Registry.register(BuiltInRegistries.BLOCK_ENTITY_TYPE, Identifier.fromNamespaceAndPath(Constants.MOD_ID, name),
+        return Registry.register(BuiltInRegistries.BLOCK_ENTITY_TYPE, Identifier.fromNamespaceAndPath(BadHygieneConstants.MOD_ID, name),
                 FabricBlockEntityTypeBuilder.<T>create(entityFactory, blocks).build());
     }
     public static void RegisterBlockEntities(){

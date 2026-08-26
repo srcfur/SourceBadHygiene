@@ -1,8 +1,7 @@
 package com.srcfur.badhygiene.block;
 
-import com.srcfur.badhygiene.CommonClass;
+import com.srcfur.badhygiene.BadHygieneCommon;
 import com.srcfur.badhygiene.api.AbstractHygienePlayer;
-import com.srcfur.badhygiene.block.entity.AbstractToiletBlockEntity;
 import com.srcfur.badhygiene.item.BadHygieneItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -25,8 +24,6 @@ import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.phys.BlockHitResult;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-
-import java.lang.reflect.InvocationTargetException;
 
 public abstract class AbstractToiletBlock extends BaseEntityBlock {
     private static final EnumProperty<Direction> FACING = BlockStateProperties.FACING;
@@ -59,7 +56,7 @@ public abstract class AbstractToiletBlock extends BaseEntityBlock {
 
     @Override
     protected InteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
-        AbstractHygienePlayer hygienePlayer = CommonClass.API.getHygienePlayer(player);
+        AbstractHygienePlayer hygienePlayer = BadHygieneCommon.API.getHygienePlayer(player);
         if(stack.getItem() == Items.BUCKET && state.getValue(BadHygieneBlockProperties.TOILET_USAGE) > 0){
             if(player.getInventory().add(new ItemStack(BadHygieneItems.Biowaste, 1))){
                 stack.setCount(stack.getCount() - 1);
@@ -70,13 +67,18 @@ public abstract class AbstractToiletBlock extends BaseEntityBlock {
             }
         }
         if(( hygienePlayer.getBladder() > 0 || hygienePlayer.getBowels() > 30 || player.isCreative() ) && state.getValue(BadHygieneBlockProperties.TOILET_USAGE) < 4 && hand == InteractionHand.MAIN_HAND){
+            if(hygienePlayer.getBowels() > 30){
+                hygienePlayer.setBowels(0);
+            }
             hygienePlayer.setBladder(0);
-            hygienePlayer.setBowels(0);
             //We funnily enough for once only do this on the client, partially so we can do some config stuff in the future. And I want this to be a standard!
-            if(level.isClientSide())
-                player.sendSystemMessage(Component.literal("*potties*"));
-            else
-                level.setBlockAndUpdate(pos, state.setValue(BadHygieneBlockProperties.TOILET_USAGE, state.getValue(BadHygieneBlockProperties.TOILET_USAGE) + 1));
+            if(level.isClientSide()) return InteractionResult.SUCCESS;
+            level.setBlockAndUpdate(pos, state.setValue(BadHygieneBlockProperties.TOILET_USAGE, state.getValue(BadHygieneBlockProperties.TOILET_USAGE) + 1));
+            for(Player player1 : level.players()){
+                if(player1.distanceToSqr(pos.getCenter()) < 8){
+                    player1.sendSystemMessage(Component.empty().append(player.getDisplayName()).append(Component.literal(" uses the bathroom")));
+                }
+            }
             return InteractionResult.SUCCESS;
         }
         return InteractionResult.PASS;

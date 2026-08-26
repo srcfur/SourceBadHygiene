@@ -3,7 +3,7 @@ package com.srcfur.badhygiene;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class Constants {
+public class BadHygieneConstants {
 
 	public static final String MOD_ID = "badhygiene";
 	public static final String MOD_NAME = "Bad Hygiene";

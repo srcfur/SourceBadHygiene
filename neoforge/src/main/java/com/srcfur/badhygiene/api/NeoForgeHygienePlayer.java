@@ -31,7 +31,4 @@ public class NeoForgeHygienePlayer extends AbstractHygienePlayer{
 
     @Override
     public void setCleanliness(int cleanliness) { getPlayer().setData(HygieneAttachments.Cleanliness.get(), cleanliness); }
-
-    @Override
-    public int getCalculatedContinence() { return getContinence(); }
 }

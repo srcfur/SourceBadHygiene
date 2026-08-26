@@ -1,6 +1,6 @@
 package com.srcfur.badhygiene.mixin;
 
-import com.srcfur.badhygiene.Constants;
+import com.srcfur.badhygiene.BadHygieneConstants;
 import net.minecraft.client.Minecraft;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -13,7 +13,7 @@ public class MixinMinecraft {
     @Inject(at = @At("TAIL"), method = "<init>")
     private void init(CallbackInfo info) {
         
-        Constants.LOG.info("This line is printed by an example mod common mixin!");
-        Constants.LOG.info("MC Version: {}", Minecraft.getInstance().getVersionType());
+        BadHygieneConstants.LOG.info("This line is printed by an example mod common mixin!");
+        BadHygieneConstants.LOG.info("MC Version: {}", Minecraft.getInstance().getVersionType());
     }
 }

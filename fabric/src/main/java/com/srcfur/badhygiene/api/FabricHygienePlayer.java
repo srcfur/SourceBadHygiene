@@ -47,9 +47,4 @@ public class FabricHygienePlayer extends AbstractHygienePlayer {
     public void setCleanliness(int cleanliness) {
         getPlayer().setAttached(HygieneAttachments.Cleanliness, cleanliness);
     }
-
-    @Override
-    public int getCalculatedContinence() {
-        return 0;
-    }
 }
