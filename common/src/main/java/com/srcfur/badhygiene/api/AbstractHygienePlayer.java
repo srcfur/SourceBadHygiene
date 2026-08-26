@@ -19,4 +19,7 @@ public abstract class AbstractHygienePlayer {
     public abstract void setCleanliness(int cleanliness);
 
     public abstract int getCalculatedContinence();
+    public float getBladderFullness(){
+        return (float)getBladder() / (float)getCalculatedContinence();
+    }
 }

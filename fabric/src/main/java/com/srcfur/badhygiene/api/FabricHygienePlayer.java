@@ -15,17 +15,17 @@ public class FabricHygienePlayer extends AbstractHygienePlayer {
 
     @Override
     public int getBowels() {
-        return 0;
+        return getPlayer().getAttachedOrGet(HygieneAttachments.Bowels, ()->0);
     }
 
     @Override
     public int getContinence() {
-        return 0;
+        return getPlayer().getAttachedOrGet(HygieneAttachments.Continence, ()->100);
     }
 
     @Override
     public int getCleanliness() {
-        return 0;
+        return getPlayer().getAttachedOrGet(HygieneAttachments.Cleanliness, ()->100);
     }
 
     @Override
@@ -35,17 +35,17 @@ public class FabricHygienePlayer extends AbstractHygienePlayer {
 
     @Override
     public void setBowels(int bowels) {
-
+        getPlayer().setAttached(HygieneAttachments.Bowels, bowels);
     }
 
     @Override
     public void setContinence(int continence) {
-
+        getPlayer().setAttached(HygieneAttachments.Continence, continence);
     }
 
     @Override
     public void setCleanliness(int cleanliness) {
-
+        getPlayer().setAttached(HygieneAttachments.Cleanliness, cleanliness);
     }
 
     @Override

@@ -13,6 +13,15 @@ public class HygieneAttachments {
     public static final AttachmentType<Integer> Bladder = AttachmentRegistry.create(
             Identifier.fromNamespaceAndPath(Constants.MOD_ID, "bladder"),
             builder -> builder.initializer(()->0).persistent(Codec.INT).syncWith(ByteBufCodecs.INT, AttachmentSyncPredicate.all()));
+    public static final AttachmentType<Integer> Bowels = AttachmentRegistry.create(
+            Identifier.fromNamespaceAndPath(Constants.MOD_ID, "bowels"),
+            builder -> builder.initializer(()->0).persistent(Codec.INT).syncWith(ByteBufCodecs.INT, AttachmentSyncPredicate.all()));
+    public static final AttachmentType<Integer> Continence = AttachmentRegistry.create(
+            Identifier.fromNamespaceAndPath(Constants.MOD_ID, "continence"),
+            builder->builder.initializer(()->100).persistent(Codec.INT).syncWith(ByteBufCodecs.INT, AttachmentSyncPredicate.all()));
+    public static final AttachmentType<Integer> Cleanliness = AttachmentRegistry.create(
+            Identifier.fromNamespaceAndPath(Constants.MOD_ID, "cleanliness"),
+            builder -> builder.initializer(()->100).persistent(Codec.INT).syncWith(ByteBufCodecs.INT, AttachmentSyncPredicate.all()));
 
     public static void init(){
 

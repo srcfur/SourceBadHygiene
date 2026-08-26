@@ -30,7 +30,9 @@ public class BadHygieneNFBlocks {
         event.register(
                 BuiltInRegistries.BLOCK.key(),
                 registry -> {
-                    BadHygieneBlocks.Toilet = register(registry, "toilet", ToiletBlock::new, BlockBehaviour.Properties.of());
+                    BadHygieneBlocks.Latrine = register(registry, "wooden_latrine", ToiletBlock::new, BlockBehaviour.Properties.of().noOcclusion());
+                    BadHygieneBlocks.Toilet = register(registry, "toilet", ToiletBlock::new, BlockBehaviour.Properties.of().noOcclusion());
+                    BadHygieneBlocks.WashingMachine = register(registry, "washing_machine", WashingMachineBlock::new, BlockBehaviour.Properties.of());
                 }
         );
     }

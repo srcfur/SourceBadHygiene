@@ -32,7 +32,11 @@ public class BadHygieneNFBlockEntities {
                 registry -> {
                     BadHygieneBlockEntities.Toilet = (BlockEntityType<AbstractToiletBlockEntity>) register(registry, "toilet", new BlockEntityType<>(
                             ToiletBlockEntity::new,
-                            Set.of(BadHygieneBlocks.Toilet)
+                            Set.of(BadHygieneBlocks.Toilet, BadHygieneBlocks.Latrine)
+                    ));
+                    BadHygieneBlockEntities.WashingMachine = (BlockEntityType<WashingMachineEntity>) register(registry, "washing_machine", new BlockEntityType<>(
+                            WashingMachineEntity::new,
+                            Set.of(BadHygieneBlocks.WashingMachine)
                     ));
                 }
         );

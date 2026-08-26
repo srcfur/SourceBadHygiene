@@ -33,6 +33,9 @@ public class BadHygieneNFItems {
         registry.register(Identifier.fromNamespaceAndPath(Constants.MOD_ID, name), item);
         return item;
     }
+    private static BlockItem registerBlockItem(String name, RegisterEvent.RegisterHelper<Item> registry, Block block, Item.Properties baseProperties){
+        return (BlockItem) register(name, registry, properties -> new BlockItem(block, properties), baseProperties);
+    }
 
     @SubscribeEvent
     public static void RegisterItems(RegisterEvent event){
@@ -40,7 +43,10 @@ public class BadHygieneNFItems {
                 BuiltInRegistries.ITEM.key(),
                 registry -> {
                     BadHygieneItems.Biowaste = register("biowaste", registry, Item::new, new Item.Properties());
-                    BadHygieneItems.Toilet = register("toilet", registry, (properties) -> new BlockItem(BadHygieneBlocks.Toilet, properties), new Item.Properties());
+                    BadHygieneItems.Detergent = register("detergent", registry, Item::new, new Item.Properties());
+                    BadHygieneItems.Latrine = registerBlockItem("wooden_latrine", registry, BadHygieneBlocks.Latrine, new Item.Properties());
+                    BadHygieneItems.Toilet = registerBlockItem("toilet", registry, BadHygieneBlocks.Toilet, new Item.Properties());
+                    BadHygieneItems.WashingMachine = registerBlockItem("washing_machine", registry, BadHygieneBlocks.WashingMachine, new Item.Properties());
                 }
         );
     }

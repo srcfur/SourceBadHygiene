@@ -8,5 +8,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 
 public class BadHygieneBlocks {
+    public static Block Latrine;
     public static Block Toilet;
+    public static Block WashingMachine;
 }

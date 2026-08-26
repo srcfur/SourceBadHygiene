@@ -17,6 +17,9 @@
     "entrypoints": {
         "main": [
             "com.srcfur.badhygiene.BadHygiene"
+        ],
+        "client": [
+            "com.srcfur.badhygiene.BadHygieneClient"
         ]
     },
     "mixins": [

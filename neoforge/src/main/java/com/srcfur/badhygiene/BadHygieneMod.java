@@ -10,7 +10,6 @@ import net.neoforged.neoforge.registries.RegisterEvent;
 
 @Mod(Constants.MOD_ID)
 public class BadHygieneMod {
-    public static final DeferredRegister<Item> ITEMS = DeferredRegister.createItems(Constants.MOD_ID);
     public BadHygieneMod(IEventBus eventBus) {
 
         // This method is invoked by the NeoForge mod loader when it is ready

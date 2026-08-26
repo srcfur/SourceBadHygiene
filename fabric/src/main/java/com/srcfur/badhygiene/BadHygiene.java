@@ -1,7 +1,13 @@
 package com.srcfur.badhygiene;
 
 import com.srcfur.badhygiene.attachment.HygieneAttachments;
+import com.srcfur.badhygiene.block.BadHygieneBlocksFabric;
+import com.srcfur.badhygiene.block.entity.BadHygieneBlockEntitiesFabric;
+import com.srcfur.badhygiene.component.BadHygieneDataComponents;
+import com.srcfur.badhygiene.component.BadHygieneDataComponentsFabric;
 import com.srcfur.badhygiene.item.BadHygieneItems;
+import com.srcfur.badhygiene.item.BadHygieneItemsFabric;
+import com.srcfur.badhygiene.menu.BadHygieneMenusFabric;
 import net.fabricmc.api.ModInitializer;
 
 public class BadHygiene implements ModInitializer {
@@ -17,7 +23,12 @@ public class BadHygiene implements ModInitializer {
         Constants.LOG.info("Hello Fabric world!");
         CommonClass.init();
         HygieneAttachments.init();
+
         //Fabric is objectively bad, and registration can happen just when the hell ever... so yeah...
-        BadHygieneItems.Register();
+        BadHygieneBlocksFabric.RegisterBlocks();
+        BadHygieneBlockEntitiesFabric.RegisterBlockEntities();
+        BadHygieneItemsFabric.RegisterItems();
+        BadHygieneMenusFabric.RegisterMenus();
+        BadHygieneDataComponentsFabric.RegisterDataComponents();
     }
 }
