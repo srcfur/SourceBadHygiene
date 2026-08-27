@@ -20,6 +20,9 @@
         ],
         "client": [
             "com.srcfur.badhygiene.BadHygieneClient"
+        ],
+        "fabric-datagen": [
+            "com.srcfur.badhygiene.BadHygieneDatagen"
         ]
     },
     "mixins": [

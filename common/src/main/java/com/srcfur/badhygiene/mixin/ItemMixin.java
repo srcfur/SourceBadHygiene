@@ -1,9 +1,11 @@
 package com.srcfur.badhygiene.mixin;
 
 import com.srcfur.badhygiene.component.BadHygieneDataComponents;
+import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import org.jspecify.annotations.Nullable;
@@ -18,6 +20,12 @@ public class ItemMixin {
     public void inventoryTick(ItemStack itemStack, ServerLevel level, Entity owner, @Nullable EquipmentSlot slot, CallbackInfo info){
         if(level.getGameTime() % 20 == 0 && itemStack.getOrDefault(BadHygieneDataComponents.Soiled, false)){
             itemStack.setDamageValue(itemStack.getDamageValue() + 1);
+            if(itemStack.getDamageValue() == itemStack.getMaxDamage()){
+                if(owner instanceof Player){
+                    ((Player)owner).sendSystemMessage(Component.empty().append(itemStack.getItemName()).append(Component.translatable("msg.badhygiene.soiled_death")));
+                }
+                itemStack.setCount(0);
+            }
         }
     }
 }

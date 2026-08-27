@@ -48,13 +48,19 @@ public abstract class HygieneAPI {
     public void serverTick(ServerPlayer plr) {
         AbstractHygienePlayer hygienePlayer = getHygienePlayer(plr);
         if(hygienePlayer.getBladder() >= hygienePlayer.getCalculatedContinence()){
-            if(!onPlayerPeedSelf(plr))
+            if(!onPlayerPeedSelf(plr)){
                 spawnUrinePuddleOnPlayer(plr);
+                hygienePlayer.impactHygiene(-15);
+            }
+
             hygienePlayer.setBladder(0);
         }
         if(hygienePlayer.getBowels() >= 40){
-            if(!onPlayerPoopedSelf(plr))
+            if(!onPlayerPoopedSelf(plr)){
                 playerSoilArmor(plr);
+                hygienePlayer.impactHygiene(-70);
+            }
+
             hygienePlayer.setBowels(0);
         }
         if(plr.level().getBlockState(plr.blockPosition()).getBlock() == BadHygieneBlocks.UrinePuddle && plr.level().getGameTime() % 10 == 0)
