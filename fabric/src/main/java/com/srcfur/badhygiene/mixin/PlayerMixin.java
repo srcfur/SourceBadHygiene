@@ -22,6 +22,6 @@ public class PlayerMixin {
     private static void createAttributes(CallbackInfoReturnable<AttributeSupplier.Builder> cir){
         BadHygieneAttributesFabric.RegisterAttributes();
         AttributeSupplier.Builder builder = cir.getReturnValue();
-        builder.add(Holder.direct(BadHygieneAttributes.Continence), 1);
+        builder.add(BadHygieneAttributes.Continence, 1);
     }
 }

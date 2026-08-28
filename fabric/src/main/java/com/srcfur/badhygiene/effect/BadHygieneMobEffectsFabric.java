@@ -13,11 +13,11 @@ import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import java.awt.*;
 
 public class BadHygieneMobEffectsFabric {
-    private static MobEffect register(String name, MobEffect effect){
-        return Registry.register(BuiltInRegistries.MOB_EFFECT, Identifier.fromNamespaceAndPath(BadHygieneConstants.MOD_ID, name), effect);
+    private static Holder<MobEffect> register(String name, MobEffect effect){
+        return Registry.registerForHolder(BuiltInRegistries.MOB_EFFECT, Identifier.fromNamespaceAndPath(BadHygieneConstants.MOD_ID, name), effect);
     }
     public static void RegisterMobEffects() {
         BadHygieneEffects.Incontinence = register("incontinence", new IncontinenceEffect(MobEffectCategory.HARMFUL, Color.black.getRGB())
-                .addAttributeModifier(Holder.direct(BadHygieneAttributes.Continence), Identifier.fromNamespaceAndPath(BadHygieneConstants.MOD_ID, "incontinence"), -0.3, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
+                .addAttributeModifier(BadHygieneAttributes.Continence, Identifier.fromNamespaceAndPath(BadHygieneConstants.MOD_ID, "incontinence"), -0.3, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
     }
 }

@@ -27,7 +27,7 @@ public abstract class AbstractHygienePlayer {
     public abstract void setCleanliness(int cleanliness);
 
     public int getCalculatedContinence() {
-        return (int)Math.floor(getContinence() * getPlayer().getAttribute(Holder.direct(BadHygieneAttributes.Continence)).getValue());
+        return (int)Math.floor(getContinence() * getPlayer().getAttribute(BadHygieneAttributes.Continence).getValue());
     }
 
     public float getBladderFullness(){
