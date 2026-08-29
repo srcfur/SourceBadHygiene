@@ -3,6 +3,7 @@ plugins {
     id 'net.neoforged.moddev'
 }
 
+
 neoForge {
     version = neoforge_version
     // Automatically enable neoforge AccessTransformers if the file exists
@@ -72,6 +73,7 @@ repositories {
             includeGroup "maven.modrinth"
         }
     }
+    maven { url 'https://jitpack.io' }
 }
 dependencies {
 }
